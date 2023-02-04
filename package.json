@@ -1,0 +1,29 @@
+{
+  "name": "openai-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaDi-BRo/openai-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaDi-BRo/openai-bot/issues"
+  },
+  "homepage": "https://github.com/SaDi-BRo/openai-bot#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "grammy": "^1.14.1",
+    "openai": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
