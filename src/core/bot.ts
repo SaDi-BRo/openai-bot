@@ -5,6 +5,6 @@ config();
 
 const bot = new Bot(process.env.BOT_TOKEN!);
 
-bot.start();
+bot.api.setWebhook(process.env.WEBHOOK!);
 
 export { bot };
