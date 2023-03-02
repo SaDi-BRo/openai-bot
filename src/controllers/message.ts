@@ -8,18 +8,20 @@ const fetchOpenAI = async (text: string) => {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${Deno.env.get('OPENAI_KEY')}`,
+      'OpenAI-Organization': Deno.env.get('OPENAI_ORGANIZATION'),
     },
     data: {
       model: 'text-davinci-003',
       prompt: text,
+      max_tokens: 4000,
     },
   });
   return data;
 };
 
 const messageController = async (ctx: Context) => {
-  const asd = await fetchOpenAI(ctx.message!.text!);
-  ctx.reply(asd.choices[0].text);
+  const response = await fetchOpenAI(ctx.message!.text!);
+  ctx.reply(response.choices[0].text);
 };
 
 export { messageController };
