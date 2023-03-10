@@ -20,20 +20,12 @@ const fetchOpenAI = async (text: string) => {
 };
 
 const messageController = async (ctx: Context) => {
-  const { message_id } = await ctx.reply('Please wait, fetching response...');
+  await ctx.replyWithChatAction('typing');
   try {
     const response = await fetchOpenAI(ctx.message!.text!);
-    await ctx.api.editMessageText(
-      ctx.chat!.id,
-      message_id,
-      response.choices[0].message.content
-    );
+    await ctx.reply(response.choices[0].message.content);
   } catch (error) {
-    await ctx.api.editMessageText(
-      ctx.chat!.id,
-      message_id,
-      error.response.data.error.message
-    );
+    await ctx.reply(error.response.data.error.message);
   }
 };
 

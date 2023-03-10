@@ -25,6 +25,7 @@ const imageController = async (ctx: Context) => {
       'Please enter a correct command.\nExample: <code>/image a cat</code>',
       { parse_mode: 'HTML' }
     );
+  await ctx.replyWithChatAction('upload_photo');
   const response = await fetchOpenAI(ctx.match);
   await ctx.replyWithPhoto(response.data[0].url, {
     caption: `Request: ${ctx.match}`,
